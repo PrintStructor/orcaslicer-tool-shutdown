@@ -125,9 +125,12 @@ Generating report...
 
 ## 📋 Requirements
 
-- **Python:** 3.6 or higher
-- **OS:** Linux, macOS, Windows
-- **Slicer:** OrcaSlicer (tested with v2.0+)
+- **Python:** 3.6 or higher  
+- **OS:** Linux, macOS, Windows  
+- **Slicer:** OrcaSlicer (tested with v2.0+)  
+- **Standby temperatures in OrcaSlicer:** Each filament used in a multi-tool print must have an idle/standby temperature configured.  
+  The script detects and hooks into OrcaSlicer's `M104 S… Tn` standby commands.  
+  If no standby temperature is defined for a given tool/filament, that tool cannot be auto-shutdown.
 
 No external dependencies required!
 
@@ -144,6 +147,11 @@ self.config = {
     'generate_report': True,    # Add detailed report to G-code
 }
 ```
+
+> ⚠️ Important  
+> The script relies on OrcaSlicer emitting standby temperature commands (e.g. `M104 S100 T0`).  
+> If a filament/tool has **no idle/standby temperature** configured in OrcaSlicer, there is no `M104 S… Tn` to hook into –  
+> in that case the script will **not modify anything for that tool**.
 
 ## 📖 How It Works
 
