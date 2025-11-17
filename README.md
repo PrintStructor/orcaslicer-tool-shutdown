@@ -272,6 +272,11 @@ When reporting bugs, please include:
 - Automatic backup creation
 - OrcaSlicer post-processing integration
 
+### v1.0.1 (2025-11-17)
+- Improved temperature command handling (no longer hard-coded to `M104 S100 Tn`)
+- More robust shutdown insertion based on the last non-zero `M104 S… Tn`
+- Updated documentation (idle temperature notes, tested setups)
+
 ## 📄 License
 
 MIT License – Use freely, modify as needed, share improvements!
